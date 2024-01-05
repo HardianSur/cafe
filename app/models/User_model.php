@@ -19,15 +19,6 @@ class User_model
         return $this->db->resultSet();
     }
 
-    public function getAllRole()
-    {
-        $query = ("SELECT * FROM tb_role");
-
-        $this->db->query($query);
-        $this->db->execute();
-        return $this->db->resultSet();
-    }
-
     public function tambahUser($data)
     {
         $query = ("INSERT INTO hardian_user VALUES (NULL, :role, :username, :password, :nama)");
@@ -46,6 +37,8 @@ class User_model
     {
         $this->db->query('SELECT * FROM hardian_user WHERE id_user=:id');
         $this->db->bind('id', $id);
+
+        $this->db->execute();
         return $this->db->single();
     }
 
@@ -56,13 +49,14 @@ class User_model
                     username = :username, 
                     password = :password, 
                     nama_user = :nama 
-                WHERE hardian_user.id_user = 9";
+                WHERE hardian_user.id_user = :id_user";
         $this->db->query($query);
 
         $this->db->bind('role', $data['role']);
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', md5($data['password']));
         $this->db->bind('nama', $data['nama']);
+        $this->db->bind('id_user', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();

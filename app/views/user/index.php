@@ -5,7 +5,7 @@
                 <h1>Data User</h1>
             </div>
             <div class="col mt-2">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal" id="tombolTambahData">Tambah Data User</button>
+                <button class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal" >Tambah Data User</button>
             </div>
         </div>
 

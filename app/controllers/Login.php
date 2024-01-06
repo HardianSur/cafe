@@ -12,6 +12,7 @@ class Login extends Controller{
             $_SESSION['username'] = $cek['username'];
             $_SESSION['id_role'] = $cek['id_role'];
             $_SESSION['nama_user'] = $cek['username'];
+            $_SESSION['id_user'] = $cek['id_user'];
             $data['user'] = $cek;
             header('Location: '. BASEURL . '/home');
             exit;

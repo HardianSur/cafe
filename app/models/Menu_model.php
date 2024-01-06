@@ -36,7 +36,7 @@ class Menu_model
 
     public function getMenuById($id)
     {
-        $this->db->query('SELECT * FROM hardian_menu INNER JOIN hardian_kategori WHERE hardian_menu.id_kategori = hardian_kategori.id_kategori 
+        $this->db->query('SELECT * FROM hardian_menu INNER JOIN hardian_kategori ON hardian_menu.id_kategori = hardian_kategori.id_kategori 
             WHERE id_menu=:id');
         $this->db->bind('id', $id);
 
@@ -44,35 +44,31 @@ class Menu_model
         return $this->db->single();
     }
 
-    public function ubahDataPelanggan($data)
+    public function ubahDataMenu($data)
     {
-        $query = "UPDATE hardian_pelanggan SET 
-                    nama_pelanggan = :nama, 
-                    alamat = :alamat, 
-                    no_telepon = :no_telepon, 
-                    jenis_kelamin = :jenis_kelamin, 
-                    tempat_lahir = :tempat_lahir, 
-                    tanggal_lahir = :tanggal_lahir, 
-                    jenis_pelanggan = :jenis_pelanggan 
-                WHERE hardian_pelanggan.id_pelanggan = :id_pelanggan";
+        $query = "UPDATE hardian_menu SET 
+        nama_menu = :nama, 
+        harga_menu = :harga_menu, 
+        id_kategori = :kategori_menu, 
+        foto_menu = :foto_menu, 
+        status_menu = :status_menu 
+        WHERE hardian_menu.id_menu = :id_menu";
         $this->db->query($query);
 
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('alamat', $data['alamat']);
-        $this->db->bind('no_telepon', $data['no_telepon']);
-        $this->db->bind('jenis_kelamin', $data['jenis_kelamin']);
-        $this->db->bind('tempat_lahir', $data['tempat_lahir']);
-        $this->db->bind('tanggal_lahir', $data['tanggal_lahir']);
-        $this->db->bind('jenis_pelanggan', $data['jenis_pelanggan']);
-        $this->db->bind('id_pelanggan', $data['id']);
+        $this->db->bind('harga_menu', $data['harga_menu']);
+        $this->db->bind('kategori_menu', $data['kategori_menu']);
+        $this->db->bind('foto_menu', $data['foto_menu']);
+        $this->db->bind('status_menu', $data['status_menu']);
+        $this->db->bind('id_menu', $data['id']);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
-    public function hapusDataPelanggan($id)
+    public function hapusDataMenu($id)
     {
-        $query = 'DELETE FROM hardian_pelanggan WHERE id_pelanggan = :id';
+        $query = 'DELETE FROM hardian_menu WHERE id_menu = :id';
         $this->db->query($query);
         $this->db->bind('id', $id);
 

@@ -109,7 +109,7 @@
                     <div class="mb-3">
                         <label for="foto_menu" class="form-label">Foto Menu</label><br>
                         <div class="input-group">
-                            <input type="file" class="form-control" id="foto_menu" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="foto_menu">
+                            <input type="file" class="form-control" id="foto_menu" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="foto_menu" value="yo">
                         </div>
                     </div>
             </div>

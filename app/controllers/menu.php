@@ -36,32 +36,32 @@ class Menu extends Controller
 
     public function ubah()
     {
-        if ($this->model('Pelanggan_model')->ubahDataPelanggan($_POST) > 0) {
+        if ($this->model('Menu_model')->ubahDataMenu($_POST) > 0) {
             echo "<script> 
                 alert('Data Berhasil di Ubah');
-                window.location.href='" . BASEURL . "/pelanggan';
+                window.location.href='" . BASEURL . "/menu';
             </script>";
             exit;
         } else {
             echo "<script> 
                 alert('Data Gagal di Ubah');
-                window.location.href='" . BASEURL . "/pelanggan';
+                window.location.href='" . BASEURL . "/menu';
             </script>";
         }
     }
 
     public function hapus($id)
     {
-        if ($this->model('Pelanggan_model')->hapusDataPelanggan($id) > 0) {
+        if ($this->model('Menu_model')->hapusDataMenu($id) > 0) {
             echo "<script> 
                 alert('Data Berhasil di Hapus');
-                window.location.href='" . BASEURL . "/pelanggan';
+                window.location.href='" . BASEURL . "/menu';
             </script>";
             exit;
         } else {
             echo "<script> 
                 alert('Data Gagal di Hapus');
-                window.location.href='" . BASEURL . "/pelanggan';
+                window.location.href='" . BASEURL . "/menu';
             </script>";
         }
     }

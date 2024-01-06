@@ -10,6 +10,7 @@ $(function () {
         $('#formModalLabel').html('Ubah Data User');
         $('.modal-footer button[type=submit]').html('Ubah');
         $('.modal-body form').attr('action', 'http://localhost/cafe_phpmvc/public/user/ubah');
+        console.log('ok')
 
         const id = $(this).data('id');
 
@@ -82,6 +83,41 @@ $(function () {
             }
         });
     });
+    //end Modal Kategori
+
+    // start Modal Pelanggan 
+    $('.tombolTambahDataPelanggan').on('click', function () {
+        $('#formModalLabelPelanggan').html('Tambah Data Pelanggan');
+        $('.modal-footer button[type=submit]').html('Tambah');
+    });
+
+    $('.tampilModalUbahPelanggan').on('click', function () {
+        $('#formModalPelangganLabel').html('Ubah Data Pelanggan');
+        $('.modal-footer button[type=submit]').html('Ubah');
+        $('.modal-body form').attr('action', 'http://localhost/cafe_phpmvc/public/pelanggan/ubah');
+        const id = $(this).data('id');
+
+        $.ajax({
+            url: 'http://localhost/cafe_phpmvc/public/pelanggan/getUbah',
+            data: { id: id },
+            method: 'post',
+            dataType: 'json',
+            success: function (data) {
+                $('#nama').val(data.nama_pelanggan);
+                $('#alamat').val(data.alamat);
+                $('#no_telepon').val(data.no_telepon);
+                $('#jenis_kelamin').val(data.jenis_kelamin);
+                $('#tempat_lahir').val(data.tempat_lahir);
+                $('#tanggal_lahir').val(data.tanggal_lahir);
+                $('#jenis_pelanggan').val(data.jenis_pelanggan);
+                $('#id').val(data.id_pelanggan);
+            }
+        });
+    });
+    //end Modal Kategori
+    
+    // start Modal Menu 
+
     //end Modal Kategori
 
 
